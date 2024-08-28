@@ -1,0 +1,83 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+env:
+  TG_CHAT: ${{ secrets.TG_CHAT }}
+  TG_TOKEN: ${{ secrets.TG_TOKEN }}
+  SITE_HOST: 140.99.164.80
+  SITE_PORT: 22
+  SITE: mercadoficinas.cl
+  USER: root
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Check Hugo config file
+        run: test -f config.toml || (echo "Configuration file not found!" && exit 1)
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: "latest"
+          extended: true
+
+      - name: Build
+        run: hugo
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Sync files using rsync
+        run: |
+          rsync -avz --delete -e "ssh -p ${{ env.SITE_PORT }} -o StrictHostKeyChecking=no" ./public/. ${{ env.USER }}@${{ env.SITE_HOST }}:/var/www/vhosts/${{ env.SITE }}
+
+      - name: Fix ownership and permissions
+        run: |
+          ssh -p ${{ env.SITE_PORT }} -o StrictHostKeyChecking=no ${{ env.USER }}@${{ env.SITE_HOST }} << EOF
+            chown -R ${{ env.USER }}:${{ env.USER }} /var/www/vhosts/${{ env.SITE }}
+          EOF
+
+      - name: Telegram success
+        uses: appleboy/telegram-action@master
+        if: ${{ success() }}
+        with:
+          to: ${{ env.TG_CHAT }}
+          token: ${{ env.TG_TOKEN }}
+          message: |
+            ✅ *Сайт *${{ env.SITE }}* успешно обновлен*
+            *${{ github.actor }}* выполнил следующее действие: ${{ github.event.head_commit.message }}
+            🔗 Пуш: ${{ github.event.head_commit.url }}.
+          format: markdown
+          disable_web_page_preview: "True"
+
+      - name: Telegram failure
+        uses: appleboy/telegram-action@master
+        if: ${{ failure() }}
+        with:
+          to: ${{ env.TG_CHAT }}
+          token: ${{ env.TG_TOKEN }}
+          message: |
+            ❌ *Произошла ошибка*
+            *${{ github.actor }}* не удалось обновить *${{ github.repository }}*. 
+            🔗 Проблема с action №${{ github.run_number }}: https://github.com/${{ github.repository }}/actions
+          format: markdown
+          disable_web_page_preview: "True"
