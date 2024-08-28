@@ -1,0 +1,59 @@
+{{- $.Scratch.Set "image" "" -}}
+{{- $.Scratch.Set "image" (.Site.Params.og_logo | absURL) -}}
+
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	"name": "{{.Site.Params.name}}",
+	"alternateName": "{{.Site.Params.alternateName}}",
+	"url": {{ absLangURL "" }},
+	"logo": 
+	{
+		"@type": "ImageObject",
+		"@id":"{{ absURL "" }}#organizationLogo",
+        "url":"{{$.Scratch.Get "image"}}",
+		{{- with resources.GetMatch ($.Scratch.Get "image" | relURL) -}}
+		{{- $image_obj := . }}
+		"width":{{$image_obj.Width}},
+        "height":{{$image_obj.Height}}{{- end }}
+	}
+}
+</script>
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "WebPage",
+	"@id": "{{ printf "%s" .Permalink }}#webPage",
+	"url": {{ printf "%s" .Permalink }},
+	"name": "{{ $.Scratch.Get "title" }}",
+	"isPartOf":
+	{
+		"@id": "{{ absURL "" }}#website"
+	},
+	"about":
+	{
+		"@id": "{{ absURL "" }}#organization"
+	},
+	"datePublished": "{{.PublishDate}}",
+	"dateModified": "{{if .Lastmod}}{{.Lastmod}}{{else}}{{.Params.modified_time}}{{end}}",
+	"description": "{{ $.Scratch.Get "description"}}",
+	"inLanguage": "{{ .Site.Language.LanguageCode }}"
+}
+</script>
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type":"WebSite",
+	"@id": "{{ absURL "" }}#website",
+	"url": {{ .Site.BaseURL }},
+	"name": {{ .Site.Params.name }},
+	"description": "{{ $.Scratch.Get "description"}}",
+	"publisher":
+	{
+		"@id": "{{ absURL "" }}#organization"
+	},
+	"inLanguage":"{{ .Site.LanguageCode }}"
+}
+</script>

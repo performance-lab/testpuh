@@ -1,0 +1,20 @@
+<link rel="preload" as="image" href="{{ `/img/banners-images/bonus-sport-underlay-desk.webp` | absURL }}">
+<link rel="dns-prefetch" as="image" href="{{ `/img/banners-images/bonus-sport-underlay-desk.webp` | absURL }}" />
+<link rel="preload" as="image" href="{{ `/img/banners-images/bonus-casino-underlay-mob.webp` | absURL }}">
+<link rel="dns-prefetch" as="image" href="{{ `/img/banners-images/bonus-casino-underlay-mob.webp` | absURL }}" />
+
+{{- $image := "/img/banners-images/bonus-casino-desk.webp" -}}
+{{- $banner := resources.GetMatch $image -}}
+{{- with $banner -}}
+{{- $small := ($banner.Resize "194x q50 webp") -}}
+<link rel="preload" as="image" href="{{ absURL $small.RelPermalink }}">
+<link rel="dns-prefetch" as="image" href="{{ absURL $small.RelPermalink }}" />
+{{- end -}}
+
+{{- $image := "/img/banners-images/bonus-casino-desk.webp" -}}
+{{- $banner := resources.GetMatch $image -}}
+{{- with $banner -}}
+{{- $small := ($banner.Resize "194x q50 webp") -}}
+<link rel="preload" as="image" href="{{ absURL $small.RelPermalink }}">
+<link rel="dns-prefetch" as="image" href="{{ absURL $small.RelPermalink }}" />
+{{- end -}}

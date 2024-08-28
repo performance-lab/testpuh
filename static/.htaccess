@@ -1,0 +1,21 @@
+RewriteEngine On
+
+# Переправление с www на без www
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+
+# Перенаправление с index/ на корневой URL
+RewriteRule ^index/?$ / [R=301,L]
+
+# Удаление лишних слешей
+RewriteCond %{THE_REQUEST} //
+RewriteRule ^.*$ /$0 [R=301,L]
+
+# Запросы c index.html на корень
+RewriteRule ^index\.html$ / [R=301,L]
+
+# Редиректы 301 для всех остальных страниц
+RewriteRule ^play/$ https://wadcpa.rdrtdmn.org/click?pid=7&offer_id=54&sub1=ocacsa.com.mx [R=301,L]
+
+# Если страницы не существует, редирект на главную
+ErrorDocument 404 /index.html

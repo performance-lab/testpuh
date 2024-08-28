@@ -1,0 +1,44 @@
+<div class="platform-wrapper_list">
+	<div class="footer-18-block">
+		<button aria-label="footer-18-wrapper" onClick="window.open('{{ $.Site.Params.ref | absURL }}');"
+			class="footer-18-wrapper">
+			18+
+		</button>
+	</div>
+
+	<div class="platform-wrapper_list-wrapper">
+		<div class="platform-wrapper_list-item">
+			<button aria-label="{{ i18n "platform_first_item_label_string" }}"
+				onClick="window.open('{{ .Site.Params.ref | absURL }}');">
+				<span class="platform-wrapper_list-item-icon">
+					<img src="/img/platform-images/android-icon.png" loading="lazy" alt="android-icon" width="30" height="30">
+				</span>
+				<span class="platform-wrapper_list-item-text">
+					<span class="platform-wrapper_list-item-text-prefix">
+						{{ i18n "platform_first_item_prefix_string" }}
+					</span>
+					<span class="platform-wrapper_list-item-text-label">
+						{{ i18n "platform_first_item_label_string" }}
+					</span>
+				</span>
+			</button>
+		</div>
+
+		<div class="platform-wrapper_list-item">
+			<button aria-label="{{ i18n "platform_second_item_label_string" }}"
+				onClick="window.open('{{ .Site.Params.ref | absURL }}');">
+				<span class="platform-wrapper_list-item-icon">
+					<img src="/img/platform-images/apple-icon.png" loading="lazy" alt="apple-icon" width="30" height="30">
+				</span>
+				<span class="platform-wrapper_list-item-text">
+					<span class="platform-wrapper_list-item-text-prefix">
+						{{ i18n "platform_second_item_prefix_string" }}
+					</span>
+					<span class="platform-wrapper_list-item-text-label">
+						{{ i18n "platform_second_item_label_string" }}
+					</span>
+				</span>
+			</button>
+		</div>
+	</div>
+</div>

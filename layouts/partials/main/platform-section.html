@@ -1,0 +1,55 @@
+<section class="platform-section">
+	<div class="container-sm">
+		<div class="section-header">
+			<div class="section-header_glow-white"></div>
+			<div class="section-header-wrapper">
+				<span style="font-size: 2.6rem; line-height: 1.2; ">{{ i18n "platform_h2_string" }}</span>
+				<span>{{ i18n "platform_subtitle_string" }}</span>
+			</div>
+			<div class="section-header_highlight_white"></div>
+		</div>
+
+		<div class="platform-wrapper">
+			<img class="platform-wrapper_img" loading="lazy" src="/img/platform-images/apps-poster-desk.webp" alt="apps-poster-desk"
+				width="717" height="568">
+			<div class="platform-wrapper_list">
+				<div class="platform-wrapper_list-wrapper">
+					<div class="platform-wrapper_list-item">
+						<button aria-label="{{ i18n "platform_first_item_label_string" }}"
+							onClick="window.open('{{ .Site.Params.ref | absURL }}');">
+							<span class="platform-wrapper_list-item-icon">
+								<img src="/img/platform-images/android-icon.png" loading="lazy" alt="android-icon" width="30"
+									height="30">
+							</span>
+							<span class="platform-wrapper_list-item-text">
+								<span class="platform-wrapper_list-item-text-prefix">
+									{{ i18n "platform_first_item_prefix_string" }}
+								</span>
+								<span class="platform-wrapper_list-item-text-label">
+									{{ i18n "platform_first_item_label_string" }}
+								</span>
+							</span>
+						</button>
+					</div>
+
+					<div class="platform-wrapper_list-item">
+						<button aria-label="{{ i18n "platform_second_item_label_string" }}"
+							onClick="window.open('{{ .Site.Params.ref | absURL }}');">
+							<span class="platform-wrapper_list-item-icon">
+								<img src="/img/platform-images/apple-icon.png" loading="lazy" alt="apple-icon" width="30" height="30">
+							</span>
+							<span class="platform-wrapper_list-item-text">
+								<span class="platform-wrapper_list-item-text-prefix">
+									{{ i18n "platform_second_item_prefix_string" }}
+								</span>
+								<span class="platform-wrapper_list-item-text-label">
+									{{ i18n "platform_second_item_label_string" }}
+								</span>
+							</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

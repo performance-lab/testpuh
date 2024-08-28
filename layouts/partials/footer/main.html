@@ -1,0 +1,13 @@
+<footer>
+	<div class="container-sm">
+		{{ partial "footer/footer-menu.html" . }}
+		{{ partial "footer/providers-sliders.html" . }}
+		{{ partial "footer/payments-sliders.html" . }}
+		{{ partial "footer/os-block.html" . }}
+	</div>
+</footer>
+
+{{- range .Site.Params.custom_js -}}
+{{- $script := resources.Get . | minify | fingerprint -}}
+<script type="text/javascript" src="{{ $script.Permalink }}" defer="defer"></script>
+{{- end -}}

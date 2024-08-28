@@ -1,0 +1,9 @@
+{{ define "main" }}
+<div class="content-section container-sm">
+	<h1>{{.Params.h1}}</h1>
+	{{.Content}}
+</div>
+{{ partial "main/platform-section.html" . }}
+{{ partial "main/casino-running-line-section.html" . }}
+{{ partial "main/pop-up.html" . }}
+{{ end }}

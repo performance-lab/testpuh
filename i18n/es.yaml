@@ -1,0 +1,59 @@
+- id: "registrate_string"
+  translation: "Registrate"
+
+- id: "login_string"
+  translation: "Inicia Sesión"
+
+- id: "platform_h2_string"
+  translation: "EN TODAS LAS PLATAFORMAS"
+
+- id: "platform_subtitle_string"
+  translation: "Web y aplicaciones móviles"
+
+- id: "platform_first_item_prefix_string"
+  translation: "Descargar para"
+
+- id: "platform_first_item_label_string"
+  translation: "Android"
+
+- id: "platform_second_item_prefix_string"
+  translation: "Descargar en"
+
+- id: "platform_second_item_label_string"
+  translation: "App Store"
+
+- id: "casino_ranning_line_header_string"
+  translation: "Ganando ahora"
+
+- id: "casino_ranning_line_button_string"
+  translation: "Jugar"
+
+- id: "footer_terms_string"
+  translation: "Términos y condiciones"
+
+- id: "footer_information_string"
+  translation: "Información"
+
+- id: "footer_casino_string"
+  translation: "Casino"
+
+- id: "footer_support_string"
+  translation: "Soporte 24/7"
+
+- id: "footer_chat_online_string"
+  translation: "Chat Online"
+
+- id: "footer_telegram_string"
+  translation: "Telegram"
+
+- id: name_popup_form
+  translation: Enter your name
+
+- id: email_popup_form
+  translation: Enter your email
+
+- id: submit_popup_form
+  translation: GET IT NOW!
+
+- id: success_message_popup_form
+  translation: Thank you! Your submission has been recorded.

@@ -1,0 +1,14 @@
+<div class="tematic-item" onClick="window.open('{{ .Site.Params.ref | absURL }}');">
+	<div class="tematic-item_underlay"></div>
+	<div class="tematic-item_img">
+		{{ $image := .Get "image-source" }}
+
+		{{ $banner := resources.GetMatch $image }}
+		{{ with $banner }}
+		{{ $small := ($banner.Resize "174x q50 webp") }}
+		{{ $large := ($banner.Resize "240x q75 webp") }}
+		<img src="{{ absURL $large.RelPermalink }}" srcset="{{ absURL $small.RelPermalink }} 300w, {{ absURL $large.RelPermalink }} 900w" sizes="(min-width: 900px) 900px, 100vw" loading="lazy" alt="live-poster-desk" width="240" height="124">
+		{{ end }}
+	</div>
+	<p>{{ .Get "text" }}</p>
+</div>

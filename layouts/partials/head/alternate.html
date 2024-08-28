@@ -1,0 +1,28 @@
+{{ if .IsHome }}
+<link rel="canonical" href="{{ absURL .Permalink }}">
+{{ else }}
+{{- if not .IsPage }}
+{{- if and .Paginator }}
+{{- if .Paginator.HasPrev }}
+<link rel="prev" href="{{ .Paginator.Prev.URL | absURL }}">
+{{- end }}
+{{- if .Paginator.HasNext }}
+<link rel="next" href="{{ .Paginator.Next.URL | absURL }}">
+{{- end }}
+<link rel="canonical" href="{{ .Paginator.First.URL | absURL }}">
+{{- end }}
+{{- else }}
+<link rel="canonical" href="{{ absURL .Permalink }}">
+{{- end }}
+{{ end }}
+
+{{ if .IsTranslated }}
+{{- range .AllTranslations }}
+{{ if not .Params.noindex }}
+<link rel="alternate" hreflang="{{ .Site.Language.LanguageCode }}" href="{{ .Permalink }}" />
+{{- end -}}
+{{- end -}}
+{{- else}}
+<link rel="alternate" hreflang="{{ .Site.Language.LanguageCode }}" href="{{ .Permalink }}" />
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
+{{end -}}

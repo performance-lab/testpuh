@@ -1,0 +1,48 @@
+<header class="menuContainer">
+	<div class="fixed-top">
+		<nav class="navbar navbar-expand-sm navLogo custom-toggler ">
+			<div class="container-sm">
+				<button aria-label="navbarToggler" class="navbar-toggler" type="button">
+					<span class="navbar-toggler-icon" id="navbarToggleIcon"></span>
+				</button>
+				{{- $.Scratch.Set "image" "" -}}
+				{{- $.Scratch.Set "image" (.Site.Params.logo | absURL) -}}
+				<a class="navbar-brand" href="{{ absLangURL "" }}">
+					{{ $alt := .Site.Params.alternateName }}
+					{{- with resources.GetMatch ($.Scratch.Get "image" | relURL) -}}
+					{{- $image_obj := . }}
+					{{- $full := .Resize (printf "%dx%d q20 webp" .Width .Height) -}}
+					<img decoding="async" loading="lazy" src="{{$full.RelPermalink | absURL}}" alt="{{$alt}}" title="{{$alt}}"
+						width="{{.Width}}" height="{{.Height}}">
+					{{end}}
+				</a>
+
+				<div class="collapse navbar-collapse navList" id="collapsibleNavbar">
+					<ul class="navbar-nav" id="main-menu" itemscope
+						itemtype="http://www.schema.org/SiteNavigationElement">
+						{{ range .Site.Menus.header_category -}}
+						<li class="nav-item">
+							<a class="nav-link" itemprop="url" href="{{ .URL }}">
+								<span itemprop="name">
+									{{ .Name }}
+								</span>
+							</a>
+						</li>
+						{{- end }}
+					</ul>
+				</div>
+
+				<div class="nav-button">
+					<button class="nav-button-registrate" onClick="window.open('{{ .Site.Params.ref | absURL }}');"
+						aria-label="{{ i18n "registrate_string" }}">
+						{{ i18n "registrate_string" }}
+					</button>
+					<button class="nav-button-login" onClick="window.open('{{ .Site.Params.ref | absURL }}');"
+						aria-label="{{ i18n "login_string" }}">
+						{{ i18n "login_string" }}
+					</button>
+				</div>
+			</div>
+		</nav>
+	</div>
+</header>

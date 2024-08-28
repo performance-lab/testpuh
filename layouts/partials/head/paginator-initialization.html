@@ -1,0 +1,6 @@
+{{- if not .IsPage -}}
+{{- if .IsHome -}}
+{{- $paginator := .Paginate (where .Site.RegularPages "Type" "games") -}}
+{{- $.Scratch.Set "paginator" $paginator -}}
+{{- end -}}
+{{- end -}}

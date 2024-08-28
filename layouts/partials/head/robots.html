@@ -1,0 +1,8 @@
+{{- if or .Site.Params.noindex .Params.noindex -}}
+<meta name='robots' content='noindex, nofollow' />
+{{- else if and (not .IsPage) (and .Paginator (ne .Paginator.PageNumber 1)) -}}
+<meta name='robots' content='noindex, follow' />
+{{- else -}}
+<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+{{partial "head/gtag.html" .}}
+{{- end -}}

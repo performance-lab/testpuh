@@ -1,0 +1,205 @@
+baseURL = 'https://mercadoficinas.cl/'
+defaultContentLanguage = "es"
+disableHugoGeneratorInject = true
+enableRobotsTXT = true
+canonifyURLs = true
+assetDir = "static"
+paginate = 20
+#enableGitInfo = true
+disableKinds = ["taxonomy", "section"]
+ignoreErrors = ["error-disable-taxonomy"]
+
+[markup]
+defaultMarkdownHandler = 'goldmark'
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
+hardWraps = true
+
+[permalinks]
+games = "/:filename/"
+
+[frontmatter]
+date = ["date", "publishDate", "lastmod"]
+lastmod = [":git", "lastmod", "date", "publishDate"]
+publishDate = ["publishDate", ":filename", "date", ":fileModTime"]
+expiryDate = ["expiryDate"]
+
+[languages]
+[languages.es]
+contentDir = "content/es"
+languageName = "es"
+languageCode = 'es-cl'
+[languages.es.params]
+languageLocale = "es-cl"
+meta_twitter_label = "Tiempo estimado de lectura"
+meta_twitter_data = "1 minuto"
+
+[params]
+noindex = true
+
+custom_css = ["/css/style.css"]
+custom_js = ["/js/tiny-slider.js", "/js/script.js"]
+logo = "/img/logo.webp"
+og_logo = "/img/logo.webp"
+favicon_logo_16 = "/img/icon-images/favicon-16x16.png"
+favicon_logo_32 = "/img/icon-images/favicon-32x32.png"
+favicon_logo_180 = "/img/icon-images/apple-touch-icon.png"
+safari_logo = "/img/icon-images/safari-pinned-tab.svg"
+webmanifest = "/img/icon-images/site.webmanifest"
+name = "mercadoficinas.cl"
+breadcrumb = "mercadoficinas.cl"
+ref = '/play/'
+alternateName = "mercadoficinas.cl"
+post_date = "2022-10-25T20:28:40+00:00"
+modify_date = "2022-10-25T20:28:40+00:00"
+default_priority = "0.5"
+default_content_language = "es"
+
+[params.title]
+page = "@post_title@ @sep@ - @sitename@"
+default = "@post_title@ @sep@ - @sitename@"
+
+[params.description]
+page = "@post_title@ @sep@ - @sitename@"
+default = "@post_title@ @sep@ - @sitename@"
+
+[params.pop_up]
+pop_up_image = "/img/pop-up-images/popup-banner.webp"
+pop_up_header = "GET 10% OFF"
+pop_up_body = "Subscribe to our Newsletter and receive a coupon"
+
+[params.footer.slider]
+providers = [
+	[
+		"/img/footer-images/providers-images/amatic.svg",
+		"amatic",
+	],
+	[
+		"/img/footer-images/providers-images/belatra.svg",
+		"belatra",
+	],
+	[
+		"/img/footer-images/providers-images/evolution.svg",
+		"evolution",
+	],
+	[
+		"/img/footer-images/providers-images/evolution.svg",
+		"evolution",
+	],
+	[
+		"/img/footer-images/providers-images/novomatic.svg",
+		"novomatic",
+	],
+	[
+		"/img/footer-images/providers-images/pg-soft.svg",
+		"pg-soft",
+	],
+	[
+		"/img/footer-images/providers-images/playngo.svg",
+		"playngo",
+	],
+	[
+		"/img/footer-images/providers-images/playson.svg",
+		"playson",
+	],
+	[
+		"/img/footer-images/providers-images/playtech.svg",
+		"playtech",
+	],
+	[
+		"/img/footer-images/providers-images/pragmatic.svg",
+		"pragmatic",
+	],
+]
+
+payments = [
+	[
+		"/img/footer-images/payments-images/beeline.svg",
+		"beeline",
+	],
+	[
+		"/img/footer-images/payments-images/humo.svg",
+		"humo",
+	],
+	[
+		"/img/footer-images/payments-images/interac.svg",
+		"interac",
+	],
+	[
+		"/img/footer-images/payments-images/mastercard.svg",
+		"mastercard",
+	],
+	[
+		"/img/footer-images/payments-images/pay-tm.svg",
+		"pay-tm",
+	],
+	[
+		"/img/footer-images/payments-images/phone-pe.svg",
+		"phone-pe",
+	],
+	[
+		"/img/footer-images/payments-images/piastrix.svg",
+		"piastrix",
+	],
+	[
+		"/img/footer-images/payments-images/pic-pay.svg",
+		"pic-pay",
+	],
+	[
+		"/img/footer-images/payments-images/pix.svg",
+		"pix",
+	],
+	[
+		"/img/footer-images/payments-images/tele-2.svg",
+		"tele-2",
+	],
+	[
+		"/img/footer-images/payments-images/upi.svg",
+		"upi",
+	],
+	[
+		"/img/footer-images/payments-images/uz-card.svg",
+		"uz-card",
+	],
+	[
+		"/img/footer-images/payments-images/visa.svg",
+		"visa",
+	],
+	[
+		"/img/footer-images/payments-images/webpay.svg",
+		"webpay",
+	],
+	[
+		"/img/footer-images/payments-images/yape.svg",
+		"yape",
+	],
+]
+
+[languages.es.menu]
+[[languages.es.menu.header_category]]
+identifier = "app"
+title = "app"
+name = "Aplicación"
+url = "/app/"
+weight = 1
+[[languages.es.menu.header_category]]
+identifier = "bono"
+title = "bono"
+name = "Bonificaciones"
+url = "/bono/"
+weight = 2
+
+
+[[languages.es.menu.footer_terms]]
+identifier = "app"
+title = "app"
+name = "Aplicación"
+url = "/app/"
+weight = 1
+[[languages.es.menu.footer_terms]]
+identifier = "bono"
+title = "bono"
+name = "Bonificaciones"
+url = "/bono/"
+weight = 2

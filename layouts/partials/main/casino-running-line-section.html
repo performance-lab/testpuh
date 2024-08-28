@@ -1,0 +1,39 @@
+<section class="casino-running-line-section">
+	<div class="container-fluid">
+		<div class="casino-running-line_block">
+			<div class="casino-running-line_wrapper">
+				<div class="casino-running-line_medivhs-portal">
+					{{ i18n "casino_ranning_line_header_string" }}
+				</div>
+				<div class="casino-running-line_items">
+					<div class="casino-running-line_items-list">
+						{{ range $loop := $.Site.Data.casino_running_line_items }}
+						<div class="casino-running-line_item">
+							<div class="casino-running-line_item-img">
+								<img src="{{ .item_img | absURL }}" loading="lazy" alt="casino-running-line_item-img" width="48"
+									height="32">
+							</div>
+							<div class="casino-running-line_item-name">
+								{{ .item_name }}
+							</div>
+							<div class="casino-running-line_item-value">
+								{{ .item_value }}
+							</div>
+							<div class="casino-running-line_item-game-btn">
+								<button aria-label="{{ i18n "casino_ranning_line_button_string" }}"
+									onClick="window.open('{{ $.Site.Params.ref | absURL }}');">
+									<span class="casino-running-line_item-game-btn-img">
+										<img src="/img/casino-running-line-images/play-icon.png" loading="lazy" alt="play-icon" width="12"
+											height="12">
+									</span>
+									<span class="casino-running-line_item-game-btn-text">{{ i18n "casino_ranning_line_button_string" }}</span>
+								</button>
+							</div>
+						</div>
+						{{ end }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

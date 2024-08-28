@@ -1,0 +1,27 @@
+<div class="banners-item red-banner">
+	<div class="banner_title">
+		<p class="banner_title-first-line">{{ .Get "title-first-line" }}</p>
+		<p class="banner_title-second-line">{{ .Get "title-second-line" }}</p>
+	</div>
+
+	<div class="banner_prize">
+		<p class="banner_prize-first-line">{{ .Get "prize-first-line" }}</p>
+		<p class="banner_prize-second-line">{{ .Get "prize-second-line" }}</p>
+	</div>
+	<button class="banner_button bright-button" aria-label="{{ .Get "button-text" }}"
+		onClick="window.open('{{ .Site.Params.ref | absURL }}');">
+		{{ .Get "button-text" }}
+	</button>
+	<div class="banner_lights red-banner_lights"></div>
+	<div class="banner_underlay red-banner_underlay"></div>
+	<div class="banner_img">
+
+		{{ $image := "/img/banners-images/bonus-sport-desk.webp" }}
+		{{ $banner := resources.GetMatch $image }}
+		{{ with $banner }}
+		{{ $small := ($banner.Resize "194x q50 webp") }}
+		{{ $large := ($banner.Resize "300x q75 webp") }}
+		<img src="{{ absURL $large.RelPermalink }}" srcset="{{ absURL $small.RelPermalink }} 300w, {{ absURL $large.RelPermalink }} 900w" sizes="(min-width: 900px) 900px, 100vw" width="310" height="352" title="bonus-casino-desk">
+		{{ end }}
+	</div>
+</div>

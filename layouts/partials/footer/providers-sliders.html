@@ -1,0 +1,22 @@
+<div class="footer_logos">
+	<div class="footer_logos-providers">
+		<div class="footer_logos-slider">
+			<div class="tns-controls" id="providers-custom-control">
+				<button class="prev">
+					&#10094;
+				</button>
+				<button class="next">
+					&#10095;
+				</button>
+			</div>
+			<div class="footer_logos-slider-wrapper providers-wrapper">
+				{{ range .Site.Params.footer.slider.providers }}
+				<div class="footer_logos-slider-wrapper-item">
+					<img loading="lazy" src="{{ index . 0 | absURL }}" alt="{{ index . 1 }}" width="120" height="48"
+						onClick="window.open('{{ $.Site.Params.ref | absURL }}');">
+				</div>
+				{{ end }}
+			</div>
+		</div>
+	</div>
+</div>

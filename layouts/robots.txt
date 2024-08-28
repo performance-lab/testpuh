@@ -1,0 +1,7 @@
+User-Agent: *
+
+Allow: /
+Disallow: /cdn-cgi/
+
+Host: {{trim .Site.BaseURL "/"}}
+Sitemap: {{.Site.BaseURL}}sitemap.xml

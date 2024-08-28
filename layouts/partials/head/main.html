@@ -1,0 +1,18 @@
+{{- partial "head/paginator-initialization.html" . -}}
+{{- partial "head/default-meta.html" . -}}
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{{partial "head/preload-initialization.html" . }}
+<title>{{ $.Scratch.Get "title" }}</title>
+
+{{- range .Site.Params.custom_css -}}
+{{- $style := resources.Get . | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $style.Permalink }}" media="all">
+{{- end -}}
+
+{{- partial "head/favicon.html" . -}}
+{{- partial "head/robots.html" . -}}
+{{- partial "head/alternate.html" . -}}
+{{- partial "head/seo.html" . -}}
+{{- partial "head/schema.html" . -}}

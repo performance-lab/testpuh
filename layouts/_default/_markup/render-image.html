@@ -1,0 +1,25 @@
+{{ $src := .Destination | safeURL }}
+{{ $alt := .PlainText | safeHTML }}
+{{ $title := .Title | safeHTML }}
+{{ $breadcrumb := .Page.Params.breadcrumb }}
+{{ $page_title := .Page.Params.Title }}
+{{ $resize := "" }}
+{{ with resources.GetMatch $src }}
+{{ $image := . }}
+{{ if eq .ResourceType "image"}}
+{{ $image := . }}
+{{ $small := ($image.Resize "388x q65 webp") }}
+{{ $medium := ($image.Resize "600x q75 webp") }}
+{{ $large := ($image.Resize "1126x q70 webp") }}
+<img loading="lazy" src="{{ absURL $large.RelPermalink }}" width="{{ $large.Width }}" height="{{ $large.Height }}"
+	alt="{{ if $alt }}{{ $alt }}{{ else if $breadcrumb }}{{ $breadcrumb }}{{ else }}{{ $page_title }}{{ end }}"
+	title="{{ if $title }}{{ $title }}{{ else if $breadcrumb }}{{ $breadcrumb }}{{ else }}{{ $page_title }}{{ end }}"
+	srcset="{{ absURL $small.RelPermalink }} 400w, {{ absURL $medium.RelPermalink }} 600w, {{ absURL $large.RelPermalink }} 1440w"
+	sizes="(max-width: 400px) 200px, (max-width: 600px) 500px, (max-width: 1440px) 1440px, 1440px">
+{{ else }}
+<img loading="lazy" itemscope itemtype="https://schema.org/ImageObject" src="{{ absURL $src }}"
+	width="{{ $image.Width }}" height="{{ $image.Height }}"
+	alt="{{ if $alt }}{{ $alt }}{{ else if $breadcrumb }}{{ $breadcrumb }}{{ else }}{{ $page_title }}{{ end }}"
+	title="{{ if $title }}{{ $title }}{{ else if $breadcrumb }}{{ $breadcrumb }}{{ else }}{{ $page_title }}{{ end }}">
+{{ end }}
+{{ end }}

@@ -1,0 +1,26 @@
+<div id="popup" class="popup">
+    <div class="popup-wrapper">
+        <div class="popup-west-side">
+            <img src="{{ .Site.Params.pop_up.pop_up_image | absURL }}" loading="lazy" alt="popup-banner" width="354" height="340">
+        </div>
+        <div class="popup-east-side">
+            <button id="closePopup" class="close-button">&times;</button>
+            <div class="popup-east-side-text">
+                <p>{{ .Site.Params.pop_up.pop_up_header }}</p>
+                <span>{{ .Site.Params.pop_up.pop_up_body }}</span>
+            </div>
+            <form method="post" id="contact-form" name="contact-form">
+                <input type="text" id="name" name="name" placeholder="{{ i18n "name_popup_form" }}" required>
+                <input type="email" id="email" name="email" placeholder="{{ i18n "email_popup_form" }}" required>
+                <input type="submit" id="submit" class="bright-button" value="{{ i18n "submit_popup_form" }}">
+            </form>
+        </div>
+    </div>
+</div>
+<div id="overlay" class="overlay"></div>
+
+<div id="successModal" class="modal">
+    <div class="modal-content">
+        <p>{{ i18n "success_message_popup_form" }}</p>
+    </div>
+</div>
