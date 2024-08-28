@@ -46,15 +46,17 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
-      - name: Sync files using rsync
+       - name: Sync files using rsync
         run: |
-          rsync -avz --delete -e "ssh -p ${{ env.SITE_PORT }} -o StrictHostKeyChecking=no" ./public/. ${{ env.USER }}@${{ env.SITE_HOST }}:/var/www/vhosts/${{ env.SITE }}
+          rsync -avz --delete -e "ssh -p ${{ env.SITE_PORT }} -o StrictHostKeyChecking=no" ./public/. ${{ env.USER }}@${{ env.SITE_HOST }}:/var/www/vhosts/${{ env.SITE }}/httpdocs
 
       - name: Fix ownership and permissions
         run: |
           ssh -p ${{ env.SITE_PORT }} -o StrictHostKeyChecking=no ${{ env.USER }}@${{ env.SITE_HOST }} << EOF
-            chown -R ${{ env.USER }}:${{ env.USER }} /var/www/vhosts/${{ env.SITE }}
+            # Ensure the correct ownership and group for all files
+            chown -R ${{ env.USER }}:${{ env.USER }} /var/www/vhosts/${{ env.SITE }}/httpdocs
           EOF
+
 
       - name: Telegram success
         uses: appleboy/telegram-action@master
