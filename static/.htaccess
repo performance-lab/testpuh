@@ -19,3 +19,5 @@ RewriteRule ^play/$ https://wadcpa.rdrtdmn.org/click?pid=7&offer_id=54&sub1=ocac
 
 # Если страницы не существует, редирект на главную
 ErrorDocument 404 /index.html
+
+# test

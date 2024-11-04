@@ -14,7 +14,7 @@ on:
 env:
   TG_CHAT: ${{ secrets.TG_CHAT }}
   TG_TOKEN: ${{ secrets.TG_TOKEN }}
-  SITE_HOST: 140.99.164.80
+  SITE_HOST: 140.99.164.454577
   SITE_PORT: 22
   SITE: mercadoficinas.cl
   USER: root
